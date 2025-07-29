@@ -226,8 +226,13 @@ gen weighted_sba = (ANC4 / 1000 * birth_projection) if ANC4 ==2
 *gen total_births = birth_projection, by(status)
 
 
-graph bar weighted_anc4 weighted_sba, over(track, label(angle(45)))legend(label(1 "ANC4") label(2 "SBA"))
 
+
+
+*The stata gragh for this project
+graph bar weighted_anc4 weighted_sba, over(track, label(angle(45)))legend(label(1 "ANC4") label(2 "SBA")) ytitle("Population-Weighted Coverage (%)") title("Health Service Coverage by U5MR Target Status", size(medium)) subtitle("2022")
+
+*descriptive statistics that are useful for conclusions to be drawn.
 su
 
 inspect weighted_anc4 weighted_sba
@@ -237,7 +242,7 @@ list track weighted_anc4 weighted_sba, noobs clean
 
 
 
-
+dyndoc coverage_report.stmd, replace export(pdf)
 
 
 
